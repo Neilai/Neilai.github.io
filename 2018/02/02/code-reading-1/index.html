@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Neil&#39;s Blog</title>
+  <title>vue.js代码阅读笔记 | Neil&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Neil&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="https://github.com/fishenal/vuejs-demo-project 项目地址：https://github.com/fishenal/vuejs-demo-project layout布局先构造出layout，把布局写好。 页头由登陆注册关于退出构成，维护了一个username变量，如果登陆成功username被赋值，退出就会显示，按下退出，username就会被销毁。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue.js代码阅读笔记">
+<meta property="og:url" content="http://yoursite.com/2018/02/02/code-reading-1/index.html">
 <meta property="og:site_name" content="Neil&#39;s Blog">
+<meta property="og:description" content="https://github.com/fishenal/vuejs-demo-project 项目地址：https://github.com/fishenal/vuejs-demo-project layout布局先构造出layout，把布局写好。 页头由登陆注册关于退出构成，维护了一个username变量，如果登陆成功username被赋值，退出就会显示，按下退出，username就会被销毁。">
+<meta property="og:updated_time" content="2018-02-02T13:29:18.548Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Neil&#39;s Blog">
+<meta name="twitter:title" content="vue.js代码阅读笔记">
+<meta name="twitter:description" content="https://github.com/fishenal/vuejs-demo-project 项目地址：https://github.com/fishenal/vuejs-demo-project layout布局先构造出layout，把布局写好。 页头由登陆注册关于退出构成，维护了一个username变量，如果登陆成功username被赋值，退出就会显示，按下退出，username就会被销毁。">
   
   
     <link rel="icon" href="/favicon.png">
@@ -157,75 +161,126 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-code-reading-1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/02/code-reading-2/" class="archive-article-date">
-  	<time datetime="2018-02-02T13:17:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/02/code-reading-2/">immoc django代码阅读笔记</a>
+    <h1 class="article-title" itemprop="name">
+      vue.js代码阅读笔记
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/02/code-reading-1/" class="archive-article-date">
+        
+        <a href="/2018/02/02/code-reading-1/" class="archive-article-date">
   	<time datetime="2018-02-02T13:10:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-02</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/02/code-reading-1/">vue.js代码阅读笔记</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://github.com/fishenal/vuejs-demo-project" target="_blank" rel="external">https://github.com/fishenal/vuejs-demo-project</a></p>
+<p>项目地址：<a href="https://github.com/fishenal/vuejs-demo-project" target="_blank" rel="external">https://github.com/fishenal/vuejs-demo-project</a></p>
+<h2 id="layout布局"><a href="#layout布局" class="headerlink" title="layout布局"></a>layout布局</h2><p>先构造出layout，把布局写好。</p>
+<h4 id="页头"><a href="#页头" class="headerlink" title="页头"></a>页头</h4><p>由登陆注册关于退出构成，维护了一个username变量，如果登陆成功username被赋值，退出就会显示，按下退出，username就会被销毁。</p>
+<h4 id="弹框的实现"><a href="#弹框的实现" class="headerlink" title="弹框的实现"></a>弹框的实现</h4><p>首先实现了最基本的弹窗布局，封装在dialog组件之中，可以传递isShow变量决定是否显示，通过发射onclose事件告诉父亲是否要关闭。</p>
+<p>接着在dialog中引入logform组件实现登陆框布局，这是一个表单，它包括表单绑定的数据变量以及错误提示变量errorText</p>
+<p>表单中值得注意的是使用了<strong>计算属性去验证表单字段</strong> </p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&gt; userErrors () &#123;</div><div class="line">&gt;   <span class="keyword">let</span> errorText, status</div><div class="line">&gt;   <span class="keyword">if</span> (!<span class="regexp">/@/g</span>.test(<span class="keyword">this</span>.usernameModel)) &#123;</div><div class="line">&gt;     status = <span class="literal">false</span></div><div class="line">&gt;     errorText = <span class="string">'不包含@'</span></div><div class="line">&gt;   &#125;</div><div class="line">&gt;   <span class="keyword">else</span> &#123;</div><div class="line">&gt;     status = <span class="literal">true</span></div><div class="line">&gt;     errorText = <span class="string">''</span></div><div class="line">&gt;   &#125;</div><div class="line">&gt;   <span class="keyword">if</span> (!<span class="keyword">this</span>.userFlag) &#123;</div><div class="line">&gt;     errorText = <span class="string">''</span></div><div class="line">&gt;     <span class="keyword">this</span>.userFlag = <span class="literal">true</span></div><div class="line">&gt;   &#125;</div><div class="line">&gt;   <span class="keyword">return</span> &#123;</div><div class="line">&gt;     status,</div><div class="line">&gt;     errorText</div><div class="line">&gt;   &#125;</div><div class="line">&gt; &#125;,</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>usererror随着model字段变化而变化，同时显示在表单末尾。因为它是子组件，所以在按下登陆的时候，需要发射一个has-log事件并把表单字段传递给父亲。</p>
+<h4 id="layout中对弹窗的控制"><a href="#layout中对弹窗的控制" class="headerlink" title="layout中对弹窗的控制"></a>layout中对弹窗的控制</h4><p>功能都在组件中实现了，那么layout就只要控制弹窗的显示与隐藏，只需要将isShow与各自显示控制字段绑定即可。</p>
+<h4 id="组件路由"><a href="#组件路由" class="headerlink" title="组件路由"></a>组件路由</h4><p>layout.vue中</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;keep-alive&gt;</div><div class="line">&gt;   &lt;router-view&gt;&lt;/router-view&gt;</div><div class="line">&gt; &lt;/keep-alive&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>实现路由到不同的页面</p>
+<h2 id="index页面"><a href="#index页面" class="headerlink" title="index页面"></a>index页面</h2><h4 id="数据填充"><a href="#数据填充" class="headerlink" title="数据填充"></a>数据填充</h4><p>在创建的时候就通过请求获取数据</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt; created: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">&gt;   <span class="keyword">this</span>.$http.get(<span class="string">'api/getNewsList'</span>)</div><div class="line">&gt;   .then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</div><div class="line">&gt;     <span class="keyword">this</span>.newsList = res.data</div><div class="line">&gt;   &#125;, (err) =&gt; &#123;</div><div class="line">&gt;     <span class="built_in">console</span>.log(err)</div><div class="line">&gt;   &#125;)</div><div class="line">&gt; &#125;,</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>然后利用for循环将数据装入</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;div</div><div class="line">&gt; class="index-board-item"</div><div class="line">&gt; v-for="(item, index) in boardList"</div><div class="line">&gt; :class="[&#123;'line-last' : index % 2 !== 0&#125;, 'index-board-' + item.id]"&gt;</div><div class="line">&gt;   &lt;div class="index-board-item-inner" &gt;</div><div class="line">&gt;     &lt;h2&gt;&#123;&#123; item.title &#125;&#125;&lt;/h2&gt;</div><div class="line">&gt;     &lt;p&gt;&#123;&#123; item.description &#125;&#125;&lt;/p&gt;</div><div class="line">&gt;     &lt;div class="index-board-button"&gt;</div><div class="line">&gt;       &lt;router-link class="button" :to="&#123;path: 'detail/' + item.toKey&#125;"&gt;立即购买&lt;/router-link&gt;</div><div class="line">&gt;     &lt;/div&gt;</div><div class="line">&gt;   &lt;/div&gt;</div><div class="line">&gt; &lt;/div&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>这段特别之处在于循环中使用变量来控制class，也就是说可以利用表达式构造自定义的class从而实现不同的css效果，上述代码借此实现奇偶项margin的不同以及不同块背景背景的不同。</p>
+<h4 id="轮播图组件"><a href="#轮播图组件" class="headerlink" title="轮播图组件"></a>轮播图组件</h4><p>轮播图组件实现的核心是使用一个nowindex变量控制哪一张显示以及isShow属性控制css动画。有一个runinv方法定时切换以及一个clearinv当鼠标悬停时不轮播切换。同时，它可以接收父元素给的inv和图像。</p>
+<h2 id="detail页面"><a href="#detail页面" class="headerlink" title="detail页面"></a>detail页面</h2><h4 id="左边列表栏"><a href="#左边列表栏" class="headerlink" title="左边列表栏"></a>左边列表栏</h4><p>利用v-for循环插入，特别之处在于active-class的绑定，这个可以指明选定该链接时应有的样式。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;router-link v-for="item in products" :to="&#123; path: item.path &#125;" tag="li" active-class="active"&gt;</div><div class="line">&gt;   &#123;&#123; item.name &#125;&#125;</div><div class="line">&gt; &lt;/router-link&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>同时列表上方的图像也要根据不同的url而改变，所以建立了一个 url到图像的map</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; imgMap: &#123;</div><div class="line">&gt;   <span class="string">'/detail/count'</span>: <span class="built_in">require</span>(<span class="string">"../assets/images/1.png"</span>),</div><div class="line">&gt;   <span class="string">'/detail/forecast'</span>: <span class="built_in">require</span>(<span class="string">"../assets/images/2.png"</span>),</div><div class="line">&gt;   <span class="string">'/detail/analysis'</span>: <span class="built_in">require</span>(<span class="string">"../assets/images/3.png"</span>),</div><div class="line">&gt;   <span class="string">'/detail/publish'</span>: <span class="built_in">require</span>(<span class="string">"../assets/images/4.png"</span>)</div><div class="line">&gt; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>同时控制图像显示的计算属性也会跟着url变化而变化</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; productIcon () &#123;</div><div class="line">&gt;   <span class="keyword">return</span> <span class="keyword">this</span>.imgMap[<span class="keyword">this</span>.$route.path]</div><div class="line">&gt; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>同时也要修改route的路由，这是一个嵌套的路由</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">let</span> router = <span class="keyword">new</span> VueRouter(&#123;</div><div class="line">&gt;  mode: <span class="string">'history'</span>,</div><div class="line">&gt;  routes: [</div><div class="line">&gt;   &#123;</div><div class="line">&gt;    path: <span class="string">'/'</span>,</div><div class="line">&gt;    component: IndexPage</div><div class="line">&gt;   &#125;,</div><div class="line">&gt;   &#123;</div><div class="line">&gt;    path: <span class="string">'/orderList'</span>,</div><div class="line">&gt;    component: OrderListPage</div><div class="line">&gt;   &#125;,</div><div class="line">&gt;   &#123;</div><div class="line">&gt;    path: <span class="string">'/detail'</span>,</div><div class="line">&gt;    component: DetailPage,</div><div class="line">&gt;    redirect: <span class="string">'/detail/analysis'</span>,</div><div class="line">&gt;    children: [</div><div class="line">&gt;     &#123;</div><div class="line">&gt;      path: <span class="string">'analysis'</span>,</div><div class="line">&gt;      component: DetailAnaPage</div><div class="line">&gt;     &#125;,</div><div class="line">&gt;     &#123;</div><div class="line">&gt;      path: <span class="string">'count'</span>,</div><div class="line">&gt;      component: DetailCouPage</div><div class="line">&gt;     &#125;,</div><div class="line">&gt;     &#123;</div><div class="line">&gt;      path: <span class="string">'forecast'</span>,</div><div class="line">&gt;      component: DetailForPage</div><div class="line">&gt;     &#125;,</div><div class="line">&gt;     &#123;</div><div class="line">&gt;      path: <span class="string">'publish'</span>,</div><div class="line">&gt;      component: DetailPubPage</div><div class="line">&gt;     &#125;</div><div class="line">&gt;    ]</div><div class="line">&gt;   &#125;</div><div class="line">&gt;  ]</div><div class="line">&gt; &#125;)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="单选，多选与下拉组件"><a href="#单选，多选与下拉组件" class="headerlink" title="单选，多选与下拉组件"></a>单选，多选与下拉组件</h4><p>都是由now-index控制状态，最终发射onchange事件将数据传给父亲。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; onParamChange (attr, val) &#123;</div><div class="line">&gt;   <span class="keyword">this</span>[attr] = val</div><div class="line">&gt;   <span class="keyword">this</span>.getPrice()</div><div class="line">&gt; &#125;,</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>在父组件中这样赋值写的有点像表单了，这样可以实时更新选到的数据类似v-model.</p>
+<h4 id="checkOrder组件"><a href="#checkOrder组件" class="headerlink" title="checkOrder组件"></a>checkOrder组件</h4><p>这个组件思想和上面类似，注意之处是点击完成后的路由跳转</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; toOrderList () &#123;</div><div class="line">&gt;   <span class="keyword">this</span>.$router.push(&#123;<span class="attr">path</span>: <span class="string">'/orderList'</span>&#125;)</div><div class="line">&gt; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Vue的思想有两个</p>
+<ul>
+<li><p>MVVM</p>
+<p>Vue将事件监听以及dom操作都封装到ViewModel里面去了，将视图和控制分离，实现了双向绑定，所以我们不需要直接操作dom，只要对数据进行控制。这意味着我们要把编程重心放在如何绑定变量，如何绑定事件，如何写v-for循环控制，如何写v-if条件控制上，以及将需要实时改变的数据写入watch或者computed。用变量来表征dom的状态。</p>
+</li>
+<li><p>组件化</p>
+<p>一个页面根据布局进行拆分，父组件调用子组件就像函数调用一样，可以传递参数(利用prop)，子组件像函数一样可以return一个变量（利用事件发射）。同时，使用vue-router可以将页面同一个地方展示不同的组件，从而做到页面切换的效果。</p>
+</li>
+</ul>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>该项目中vuex使用</p>
+<p>利用vuex可以把那些异步请求写在store里面，vux维护了一个state，我们只要调用getters获取状态即可 </p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; tableData () &#123;</div><div class="line">&gt;   return this.$store.getters.getOrderList</div><div class="line">&gt; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p> 每一次需要ajax更新数据源时，只要分发 一个action</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; this.$store.commit(&apos;updateParams&apos;, &#123;</div><div class="line">&gt;     key: &apos;startDate&apos;,</div><div class="line">&gt;     val: date</div><div class="line">&gt;   &#125;)</div><div class="line">&gt;   this.$store.dispatch(&apos;refreshList&apos;)</div><div class="line">&gt; &#125;,</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
 
-        <div class="article-info info-on-right">
-          
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -238,103 +293,113 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/02/02/code-reading-1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
+<nav id="article-nav">
+  
+    <a href="/2018/02/02/code-reading-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          immoc django代码阅读笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/31/2017-summary/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2017 总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/2017-summary/" class="archive-article-date">
-  	<time datetime="2017-12-31T15:01:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/2017-summary/">2017 总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/02/hello-world/" class="archive-article-date">
-  	<time datetime="2017-11-02T08:37:00.456Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-02</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/02/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -357,8 +422,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

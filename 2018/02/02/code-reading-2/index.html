@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Neil&#39;s Blog</title>
+  <title>immoc django代码阅读笔记 | Neil&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Neil&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="项目地址：https://github.com/zaxlct/imooc-django 用户登陆与注册login 中使用了Q方法区并集  123456789&amp;gt; class CustomBackend(ModelBackend):&amp;gt;     def authenticate(self, username=None, password=None, **kwargs):&amp;gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="immoc django代码阅读笔记">
+<meta property="og:url" content="http://yoursite.com/2018/02/02/code-reading-2/index.html">
 <meta property="og:site_name" content="Neil&#39;s Blog">
+<meta property="og:description" content="项目地址：https://github.com/zaxlct/imooc-django 用户登陆与注册login 中使用了Q方法区并集  123456789&amp;gt; class CustomBackend(ModelBackend):&amp;gt;     def authenticate(self, username=None, password=None, **kwargs):&amp;gt;">
+<meta property="og:updated_time" content="2018-02-02T13:33:49.846Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Neil&#39;s Blog">
+<meta name="twitter:title" content="immoc django代码阅读笔记">
+<meta name="twitter:description" content="项目地址：https://github.com/zaxlct/imooc-django 用户登陆与注册login 中使用了Q方法区并集  123456789&amp;gt; class CustomBackend(ModelBackend):&amp;gt;     def authenticate(self, username=None, password=None, **kwargs):&amp;gt;">
   
   
     <link rel="icon" href="/favicon.png">
@@ -157,37 +161,189 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-code-reading-2" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      immoc django代码阅读笔记
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/02/code-reading-2/" class="archive-article-date">
+
+        
+        <a href="/2018/02/02/code-reading-2/" class="archive-article-date">
   	<time datetime="2018-02-02T13:17:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-02</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/02/code-reading-2/">immoc django代码阅读笔记</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>项目地址：<a href="https://github.com/zaxlct/imooc-django" target="_blank" rel="external">https://github.com/zaxlct/imooc-django</a></p>
+<h2 id="用户登陆与注册"><a href="#用户登陆与注册" class="headerlink" title="用户登陆与注册"></a>用户登陆与注册</h2><p>login 中使用了Q方法区并集</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="class"><span class="keyword">class</span> <span class="title">CustomBackend</span><span class="params">(ModelBackend)</span>:</span></div><div class="line">&gt;     <span class="function"><span class="keyword">def</span> <span class="title">authenticate</span><span class="params">(self, username=None, password=None, **kwargs)</span>:</span></div><div class="line">&gt;         <span class="keyword">try</span>:</div><div class="line">&gt;             user = UserProfile.objects.get(Q(username = username) | Q(email=username))</div><div class="line">&gt;             <span class="keyword">if</span> user.check_password(password):</div><div class="line">&gt;                 <span class="keyword">return</span> user</div><div class="line">&gt;         <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">&gt;             <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>重写authenticate()认证并添加配置, </p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; AUTH_USER_MODEL = <span class="string">'users.UserProfile'</span></div><div class="line">&gt; AUTHENTICATION_BACKENDS = (<span class="string">'users.views.CustomBackend'</span>,)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="class"><span class="keyword">class</span> <span class="title">LoginView</span><span class="params">(View)</span>:</span></div><div class="line">&gt;     <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, request)</span>:</span></div><div class="line">&gt;         <span class="keyword">return</span> render(request, <span class="string">'login.html'</span>)</div><div class="line">&gt;</div><div class="line">&gt;     <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self, request)</span>:</span></div><div class="line">&gt;         login_form = LoginForm(request.POST)</div><div class="line">&gt;         <span class="keyword">if</span> login_form.is_valid():</div><div class="line">&gt;             user_name = request.POST.get(<span class="string">'username'</span>, <span class="string">''</span>)</div><div class="line">&gt;             password = request.POST.get(<span class="string">'password'</span>, <span class="string">''</span>)</div><div class="line">&gt;             <span class="comment"># 上面的 authenticate 方法 return user</span></div><div class="line">&gt;             user = authenticate(username=user_name, password=password)</div><div class="line">&gt;</div><div class="line">&gt;             <span class="keyword">if</span> user <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">&gt;                 <span class="keyword">if</span> user.is_active:</div><div class="line">&gt;                     login(request, user)</div><div class="line">&gt;                     <span class="keyword">return</span> HttpResponsePermanentRedirect(reverse(<span class="string">'index'</span>))</div><div class="line">&gt;                 <span class="keyword">return</span> render(request, <span class="string">'login.html'</span>, &#123;<span class="string">'msg'</span>: <span class="string">'用户未激活！'</span>&#125;)</div><div class="line">&gt;             <span class="keyword">return</span> render(request, <span class="string">'login.html'</span>, &#123;<span class="string">'msg'</span>: <span class="string">'用户名或者密码错误！'</span>&#125;)</div><div class="line">&gt;</div><div class="line">&gt;         <span class="keyword">return</span> render(request, <span class="string">'login.html'</span>, &#123;<span class="string">'form_errors'</span>: login_form.errors&#125;)</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>表单验证，创建form</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="class"><span class="keyword">class</span> <span class="title">LoginForm</span><span class="params">(forms.Form)</span>:</span></div><div class="line">&gt;     username = forms.CharField(required=<span class="keyword">True</span>)</div><div class="line">&gt;     password = forms.CharField(required=<span class="keyword">True</span>, min_length=<span class="number">5</span>)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>模板验证登陆状态</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;  request.user.is_authenticated</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>注册功能传回form,可以提取每一个字段的value</p>
+注册验证码组件<br><br>利用error控制样式<br><br>&gt;  
+<p>也可以自定义error</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; captcha = CaptchaField(error_messages=&#123;<span class="string">'invalid'</span>: <span class="string">'验证码错误！'</span>&#125;)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>django里面也有自带的发送邮件api</p>
+<p>发送前需要作一些配置</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; EMAIL_HOST = <span class="string">'smtp.qq.com'</span></div><div class="line">&gt; EMAIL_PORT = <span class="number">25</span></div><div class="line">&gt; EMAIL_HOST_USER = <span class="string">'10581290@qq.com'</span></div><div class="line">&gt; EMAIL_HOST_PASSWORD = <span class="string">'scdxhwjinajgbjjc'</span></div><div class="line">&gt; EMAIL_USE_TLS = <span class="keyword">True</span></div><div class="line">&gt; EMAIL_FROM = <span class="string">'10581290@qq.com'</span></div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>然后再调用</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; send_mail(email_title, email_body, EMAIL_FROM, [email])</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>发送邮件之后，需要保存链接的代码，然后通过路由(注意参数隐藏在正则表达式中)</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; url(<span class="string">r'^active/(?P&lt;active_code&gt;.*)/$'</span>, ActiveUserView.as_view(), name=<span class="string">'user_active'</span>),</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>改密码的逻辑是一样的，要注意密码是加密过的所以改的时候需要调用特定的函数</p>
+<blockquote>
+<p>user.password = make_password(pwd2)</p>
+</blockquote>
+<p>要注意修改页面只能通过发送的链接进入，然后再专门有一个视图处理POST修改请求</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>这部分功能主要涉及的是表单操作，注意VIEW是核心枢纽，每次渲染页面的时候提供新的错位信息以及表单绑定数据。</p>
+<h2 id="授课机构"><a href="#授课机构" class="headerlink" title="授课机构"></a>授课机构</h2><h4 id="模板继承与组件化"><a href="#模板继承与组件化" class="headerlink" title="模板继承与组件化"></a>模板继承与组件化</h4><p>页头页尾写在base中，再在其他地方使用extend继承</p>
+<p>使用block实现重要部分内容的修改</p>
+<h4 id="上传文件保存目录的配置"><a href="#上传文件保存目录的配置" class="headerlink" title="上传文件保存目录的配置"></a>上传文件保存目录的配置</h4><blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; MEDIA_URL = <span class="string">'/media/'</span></div><div class="line">&gt; MEDIA_ROOT = os.path.join(BASE_DIR, <span class="string">'media'</span>)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>在model处地方</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; image = models.ImageField(default=<span class="string">''</span>, upload_to=<span class="string">'org/%Y/%m'</span>, verbose_name=<span class="string">'封面图'</span>, max_length=<span class="number">100</span>)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="分页采用了pure-pagination插件"><a href="#分页采用了pure-pagination插件" class="headerlink" title="分页采用了pure pagination插件"></a>分页采用了pure pagination插件</h4><p>在view中获取分页插件传递过来的page变量，并作每页显示多少的配置</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">try</span>:</div><div class="line">&gt;     page = request.GET.get(<span class="string">'page'</span>, <span class="number">1</span>)</div><div class="line">&gt; <span class="keyword">except</span> PageNotAnInteger:</div><div class="line">&gt;     page = <span class="number">1</span></div><div class="line">&gt; p = Paginator(all_orgs, <span class="number">2</span>, request=request)</div><div class="line">&gt; orgs = p.page(page)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>模板代码</p>
+<blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&gt;  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pageturn"</span>&gt;</span></div><div class="line">&gt;     <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"pagelist"</span>&gt;</span></div><div class="line">&gt;       &#123;% if all_orgs.has_previous %&#125;</div><div class="line">&gt;       <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"long"</span>&gt;</span></div><div class="line">&gt;         <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"?&#123;&#123; all_orgs.previous_page_number.querystring &#125;&#125;"</span> <span class="attr">class</span>=<span class="string">"prev"</span>&gt;</span>上一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">&gt;       <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">&gt;       &#123;% endif %&#125;</div><div class="line">&gt;</div><div class="line">&gt;       &#123;% for page in all_orgs.pages %&#125;</div><div class="line">&gt;         &#123;% if page %&#125;</div><div class="line">&gt;           &#123;% ifequal page all_orgs.number %&#125;</div><div class="line">&gt;             <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"?&#123;&#123; page.querystring &#125;&#125;"</span> <span class="attr">class</span>=<span class="string">"page"</span>&gt;</span>&#123;&#123; page &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">&gt;           &#123;% else %&#125;</div><div class="line">&gt;             <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"?&#123;&#123; page.querystring &#125;&#125;"</span> <span class="attr">class</span>=<span class="string">"page"</span>&gt;</span>&#123;&#123; page &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">&gt;           &#123;% endifequal %&#125;</div><div class="line">&gt;         &#123;% else %&#125;</div><div class="line">&gt;           <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"none"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">&gt;         &#123;% endif %&#125;</div><div class="line">&gt;       &#123;% endfor %&#125;</div><div class="line">&gt;       &#123;% if all_orgs.has_next %&#125;</div><div class="line">&gt;         <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"long"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"?&#123;&#123; all_orgs.next_page_number.querystring &#125;&#125;"</span>&gt;</span>下一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">&gt;       &#123;% endif %&#125;</div><div class="line">&gt;     <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">&gt;   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">&gt; <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>从模板中可以看出，我们只要对前一页，中间页，后一页进行样式配置即可。</p>
+<h4 id="单页面切换"><a href="#单页面切换" class="headerlink" title="单页面切换"></a>单页面切换</h4><p>Vue中是利用组件实现，在django中通过传递参数给view，能够在同一页面获得不同的数据源，同时需要一个变量(city_id)标识现在所出的状态并以此控制样式(if-equal)。</p>
+<blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; &#123;% for city in all_citys %&#125;</div><div class="line">&gt;   <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"?city=&#123;&#123; city.id &#125;&#125;&amp;ct=&#123;&#123; category &#125;&#125;"</span>&gt;</span></div><div class="line">&gt;     <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"&#123;% ifequal city_id city.id|stringformat:'i' %&#125;active2&#123;% endifequal %&#125;"</span>&gt;</span>&#123;&#123; city.name &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">&gt;   <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">&gt; &#123;% endfor %&#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>切换还有一种方法是利用url字段，例如在主页面中</p>
+<blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"&#123;% ifequal request.path '/' %&#125;active&#123;% endifequal %&#125;"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'index' %&#125;"</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">&gt; <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"&#123;% ifequal request.path|slice:'7' '/course' %&#125;active&#123;% endifequal %&#125;"</span>&gt;</span></div><div class="line">&gt;   <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'courses:course_list' %&#125;"</span>&gt;</span></div><div class="line">&gt;     公开课<span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"hot"</span> <span class="attr">src</span>=<span class="string">"&#123;% static 'images/nav_hot.png' %&#125;"</span>&gt;</span></div><div class="line">&gt;   <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">&gt; <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">&gt; <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"&#123;% ifequal request.path|slice:'12' '/org/teacher' %&#125;active&#123;% endifequal %&#125;"</span>&gt;</span></div><div class="line">&gt;   <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'org:teacher_list' %&#125;"</span>&gt;</span>授课教师<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">&gt; <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">&gt; <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"&#123;% ifequal request.path|slice:'9' '/org/list' %&#125;active&#123;% endifequal %&#125;"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'org:org_list' %&#125;"</span>&gt;</span>授课机构<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>它将url覅之进行切割判断，这里用了slice过滤器，取前几位</p>
+<p>另外要注意参数传递的是字符串类型。所以利用了过滤器stringformat转换为字符串(i)</p>
+<p>for循环填充数据的时候可以利用forlooper.counter获取index</p>
+<p>同理，如果将数据进行排序，只要将sort传入view即可</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; # 排序</div><div class="line">&gt; sort = request.GET.get(&apos;sort&apos;, &apos;&apos;)</div><div class="line">&gt; if sort == &apos;students&apos;:</div><div class="line">&gt;     all_orgs = all_orgs.order_by(&apos;-students&apos;)</div><div class="line">&gt; elif sort == &apos;courses&apos;:</div><div class="line">&gt;     all_orgs = all_orgs.order_by(&apos;-course_nums&apos;)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="异步表单的处理"><a href="#异步表单的处理" class="headerlink" title="异步表单的处理"></a>异步表单的处理</h4><p>为了简化代码量，可以利用model定义form</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="class"><span class="keyword">class</span> <span class="title">UserAskForm</span><span class="params">(forms.ModelForm)</span>:</span></div><div class="line">&gt;     <span class="comment"># 还可以新增字段</span></div><div class="line">&gt;     <span class="comment"># price = forms.CharField(required=True, min_length=2, max_length=20)</span></div><div class="line">&gt;</div><div class="line">&gt;     <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">&gt;         model = UserAsk</div><div class="line">&gt;         fields = [<span class="string">'name'</span>, <span class="string">'mobile'</span>, <span class="string">'course_name'</span>]</div><div class="line">&gt;</div><div class="line">&gt;     <span class="comment"># def clean_name(self):</span></div><div class="line">&gt;     <span class="comment"># def clean_course_name(self):</span></div><div class="line">&gt;     <span class="function"><span class="keyword">def</span> <span class="title">clean_mobile</span><span class="params">(self)</span>:</span></div><div class="line">&gt;         <span class="comment"># 手机号验证</span></div><div class="line">&gt;         mobile = self.cleaned_data[<span class="string">'mobile'</span>]</div><div class="line">&gt;         p = re.compile(<span class="string">'^0\d&#123;2,3&#125;\d&#123;7,8&#125;$|^1[358]\d&#123;9&#125;$|^147\d&#123;8&#125;'</span>)</div><div class="line">&gt;         <span class="keyword">if</span> p.match(mobile):</div><div class="line">&gt;             <span class="comment"># 这里还能返回外键</span></div><div class="line">&gt;             <span class="keyword">return</span> mobile</div><div class="line">&gt;         <span class="keyword">raise</span> forms.ValidationError(<span class="string">'手机号码格式不对'</span>, code=<span class="string">'mobile_inval'</span>)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>这里面定义了一个以clean开头的函数进行数据清洗，验证数据是否合法</p>
+<p>注意所有表单的后面要加上 csrf-token</p>
+<p>后端的view需要返回一个json字符串</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">return</span> HttpResponse(json.dumps(res), content_type=<span class="string">'application/json'</span>)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>由于django进行ajax请求的时候没有返回模板数据，所以要利用到jquery的dom操作</p>
+<h4 id="详情页面"><a href="#详情页面" class="headerlink" title="详情页面"></a>详情页面</h4><p>注意跳转链接的写法</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;a href=<span class="string">"&#123;% url 'org:org_home' org.id %&#125;"</span>&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>命名空间+名字+参数</p>
+<p>通过id获取后台数据渲染前台页面，这个详情页面的本质是一个单页面应用，但是数据源没有同一性，所以我们要分别写四个页面，并通过标识参数取告诉前端应该显示怎样的样式。</p>
+<p>详情页面收藏功能同样用到了jquery的ajax，但是这个不是一个表单，所以我们需要在jquery中增加一个配置</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; beforeSend: function (xhr, settings) &#123;</div><div class="line">&gt;   xhr.setRequestHeader(<span class="string">"X-CSRFToken"</span>, <span class="string">"&#123;&#123; csrf_token &#125;&#125;"</span>);</div><div class="line">&gt; &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="课程页面"><a href="#课程页面" class="headerlink" title="课程页面"></a>课程页面</h2><p>模型层需要注意的是运用了反向取数据</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="comment">#反向取数据</span></div><div class="line">&gt; <span class="function"><span class="keyword">def</span> <span class="title">get_zj_nums</span><span class="params">(self)</span>:</span></div><div class="line">&gt;     <span class="keyword">return</span> self.lesson_set.all().count()</div><div class="line">&gt;</div><div class="line">&gt; <span class="function"><span class="keyword">def</span> <span class="title">get_learn_users</span><span class="params">(self)</span>:</span></div><div class="line">&gt;     <span class="keyword">return</span> self.usercourse_set.all()[:<span class="number">5</span>]</div><div class="line">&gt;</div><div class="line">&gt; <span class="function"><span class="keyword">def</span> <span class="title">get_course_lesson</span><span class="params">(self)</span>:</span></div><div class="line">&gt;     <span class="keyword">return</span> self.lesson_set.all()</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>这样只要在模板渲染的时候调用就好了</p>
+<h4 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h4><p>这里运用ajax增加获取的变量，然后刷新页面</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; window.location.reload();//刷新当前页面.</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="用户登陆验证"><a href="#用户登陆验证" class="headerlink" title="用户登陆验证"></a>用户登陆验证</h4><p>自定义一个验证登陆的类</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="class"><span class="keyword">class</span> <span class="title">LoginRequiredMixin</span><span class="params">(object)</span>:</span></div><div class="line">&gt;     @method_decorator(login_required(login_url=<span class="string">'/login/'</span>))</div><div class="line">&gt;     <span class="function"><span class="keyword">def</span> <span class="title">dispatch</span><span class="params">(self, request, *args, **kwargs)</span>:</span></div><div class="line">&gt;         <span class="keyword">return</span> super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>所有需要的只要继承这个类即可</p>
+<h2 id="个人中心"><a href="#个人中心" class="headerlink" title="个人中心"></a>个人中心</h2><p>通过request.user取属性</p>
+<h4 id="头像图片上传"><a href="#头像图片上传" class="headerlink" title="头像图片上传"></a>头像图片上传</h4><p>首先定义form</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="class"><span class="keyword">class</span> <span class="title">UploadImageForm</span><span class="params">(forms.ModelForm)</span>:</span></div><div class="line">&gt;     <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">&gt;         model = UserProfile</div><div class="line">&gt;         fields = [<span class="string">'image'</span>]</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>这样，在视图中就可以直接save</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; image_form = UploadImageForm(request.POST, request.FILES, instance=request.user)</div><div class="line">&gt; res = dict()</div><div class="line">&gt; <span class="keyword">if</span> image_form.is_valid():</div><div class="line">&gt;     image_form.save()</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="资料修改"><a href="#资料修改" class="headerlink" title="资料修改"></a>资料修改</h4><p>注意修改的时候save会默认增加一个实例，所以我们要对instance进行赋值操作</p>
+<h4 id="用户退出"><a href="#用户退出" class="headerlink" title="用户退出"></a>用户退出</h4><blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="comment">#用户登出</span></div><div class="line">&gt; <span class="class"><span class="keyword">class</span> <span class="title">LogoutView</span><span class="params">(View)</span>:</span></div><div class="line">&gt;     <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, request)</span>:</span></div><div class="line">&gt;         logout(request)</div><div class="line">&gt;         <span class="keyword">return</span> HttpResponsePermanentRedirect(reverse(<span class="string">'index'</span>))</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="其他处理"><a href="#其他处理" class="headerlink" title="其他处理"></a>其他处理</h2><p>debug=true的时候需要配置一下static和media</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; url(<span class="string">r'^media/(?P&lt;path&gt;.*)$'</span>,serve, &#123;<span class="string">'document_root'</span>: MEDIA_ROOT&#125;)</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>以及</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="keyword">if</span> settings.DEBUG:</div><div class="line">&gt;     <span class="comment"># debug_toolbar 插件配置</span></div><div class="line">&gt;     <span class="keyword">import</span> debug_toolbar</div><div class="line">&gt;     urlpatterns.append(url(<span class="string">r'^__debug__/'</span>, include(debug_toolbar.urls)))</div><div class="line">&gt; <span class="keyword">else</span>:</div><div class="line">&gt;     <span class="comment"># 项目部署上线时使用</span></div><div class="line">&gt;     <span class="keyword">from</span> imooc.settings <span class="keyword">import</span> STATIC_ROOT</div><div class="line">&gt;     <span class="comment"># 配置静态文件访问处理</span></div><div class="line">&gt;     urlpatterns.append(url(<span class="string">r'^static/(?P&lt;path&gt;.*)$'</span>, serve, &#123;<span class="string">'document_root'</span>: STATIC_ROOT&#125;))</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>django的核心思想是view中处理模型交互以及渲染页面，是中枢，前端每次通过get view获得页面的数据源，每次get可以携带不同的参数这样就能获得不同的数据源来填充页面。如果是ajax请求来更新模型，请求后要么通过dom操作改变页面，要么重载页面，这也是django一个缺陷，必须要重新刷新更新数据源，这时的模板语法就没用武之地。在cookie处理方面，django利用了request对象，只要通过login方法登陆成功了，就可request.user取得想要的数据。</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -200,141 +356,104 @@
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/02/code-reading-1/" class="archive-article-date">
-  	<time datetime="2018-02-02T13:10:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/02/code-reading-1/">vue.js代码阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/02/02/code-reading-2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/2017-summary/" class="archive-article-date">
-  	<time datetime="2017-12-31T15:01:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/2017-summary/">2017 总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/02/hello-world/" class="archive-article-date">
-  	<time datetime="2017-11-02T08:37:00.456Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/02/02/code-reading-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue.js代码阅读笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/02/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -357,8 +476,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
