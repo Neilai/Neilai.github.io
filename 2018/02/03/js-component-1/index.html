@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Neil&#39;s Blog</title>
+  <title>原生JS(一)：封装运动框架 | Neil&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Neil&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="核心思想JS动画本质是利用setinterval模拟打关键帧，每一次调用修改speed控制缓冲运动的速度 注意点 获取style 通常的直接style.attr 只能获取到内部样式，内嵌和外部样式无法获取，所以需要用getComputedStyle(obj, false)[attr] (火狐，谷歌)或者 currentstyle(IE) 封装后如下所示： 12345function getStyl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原生JS(一)：封装运动框架">
+<meta property="og:url" content="http://yoursite.com/2018/02/03/js-component-1/index.html">
 <meta property="og:site_name" content="Neil&#39;s Blog">
+<meta property="og:description" content="核心思想JS动画本质是利用setinterval模拟打关键帧，每一次调用修改speed控制缓冲运动的速度 注意点 获取style 通常的直接style.attr 只能获取到内部样式，内嵌和外部样式无法获取，所以需要用getComputedStyle(obj, false)[attr] (火狐，谷歌)或者 currentstyle(IE) 封装后如下所示： 12345function getStyl">
+<meta property="og:updated_time" content="2018-02-03T15:40:52.070Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Neil&#39;s Blog">
+<meta name="twitter:title" content="原生JS(一)：封装运动框架">
+<meta name="twitter:description" content="核心思想JS动画本质是利用setinterval模拟打关键帧，每一次调用修改speed控制缓冲运动的速度 注意点 获取style 通常的直接style.attr 只能获取到内部样式，内嵌和外部样式无法获取，所以需要用getComputedStyle(obj, false)[attr] (火狐，谷歌)或者 currentstyle(IE) 封装后如下所示： 12345function getStyl">
   
   
     <link rel="icon" href="/favicon.png">
@@ -157,151 +161,81 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-js-component-1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/03/js-component-4/" class="archive-article-date">
-  	<time datetime="2018-02-03T15:11:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/03/js-component-4/">原生JS（四）：滚动条组件</a>
+    <h1 class="article-title" itemprop="name">
+      原生JS(一)：封装运动框架
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/web相关//" class="article-tag-list-link color1">web相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/03/js-component-3/" class="archive-article-date">
-  	<time datetime="2018-02-03T15:08:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/03/js-component-3/">原生JS（三）：轮播图组件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/web相关//" class="article-tag-list-link color1">web相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/03/js-component-2/" class="archive-article-date">
-  	<time datetime="2018-02-03T15:06:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/03/js-component-2/">原生JS（二）：手风琴组件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/web相关//" class="article-tag-list-link color1">web相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/03/js-component-1/" class="archive-article-date">
+        
+        <a href="/2018/02/03/js-component-1/" class="archive-article-date">
   	<time datetime="2018-02-03T15:02:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-03</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/03/js-component-1/">原生JS(一)：封装运动框架</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h4><p>JS动画本质是利用setinterval模拟打关键帧，每一次调用修改speed控制缓冲运动的速度</p>
+<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h4><ul>
+<li><p>获取style</p>
+<p>通常的直接style.attr 只能获取到内部样式，内嵌和外部样式无法获取，所以需要用getComputedStyle(obj, false)[attr] (火狐，谷歌)或者 currentstyle(IE)</p>
+<p>封装后如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStyle</span>(<span class="params">obj, attr</span>) </span>&#123;   </div><div class="line">  <span class="keyword">if</span> (obj.currentStyle) &#123;        </div><div class="line">    <span class="keyword">return</span> obj.currentStyle[attr];    &#125; </div><div class="line">  <span class="keyword">else</span> &#123;     </div><div class="line">      <span class="keyword">return</span> getComputedStyle(obj, <span class="literal">false</span>)[attr];    &#125;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置透明度</p>
+<p>IE和谷歌也有区别</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">filter:alpha(opacity:<span class="number">30</span>);   </div><div class="line">opacity: <span class="number">0.3</span>;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="动画框架实现"><a href="#动画框架实现" class="headerlink" title="动画框架实现"></a>动画框架实现</h4><ul>
+<li><p>接收三个参数 obj,json,fn。 分别指向动画作用对象，属性最终结果，回掉。</p>
+</li>
+<li><p>每一个对象对应一个timer</p>
+</li>
+<li><p>每一个timer的操作中，需要对传入的所有属性进行遍历，只要有一个属性没有到预定的值，便把flag置为false</p>
+</li>
+<li><p>由于属性只能为整数，所以speed需要进行四舍五入</p>
+</li>
+<li><p>由于opacity的特殊性，需要单独判断</p>
+<p>完整代码如下：</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">    <span class="comment">//同时运动框架</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params">obj, json, fn</span>) </span>&#123;</div><div class="line">        clearInterval(obj.timer);<span class="comment">//清除定时器，避免重复生成多个定时器</span></div><div class="line">        obj.timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> flag = <span class="literal">true</span>;<span class="comment">//假设刚开始时所有运动都已完成</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> json) &#123;<span class="comment">//遍历json</span></div><div class="line">                <span class="keyword">var</span> icur = <span class="literal">null</span>;</div><div class="line"><span class="comment">//1.判断类型</span></div><div class="line">                <span class="keyword">if</span> (attr == <span class="string">'opacity'</span>) &#123;</div><div class="line">                    icur = <span class="built_in">Math</span>.round(<span class="built_in">parseFloat</span>(getStyle(obj, attr)) * <span class="number">100</span>);</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    icur = <span class="built_in">parseInt</span>(getStyle(obj, attr));</div><div class="line">                &#125;</div><div class="line"><span class="comment">//2.算速度</span></div><div class="line">                <span class="keyword">var</span> speed = (json[attr] - icur) / <span class="number">10</span>;</div><div class="line">                speed = speed &gt; <span class="number">0</span> ? <span class="built_in">Math</span>.ceil(speed) : <span class="built_in">Math</span>.floor(speed);</div><div class="line"><span class="comment">//3.检测停止</span></div><div class="line">                <span class="keyword">if</span> (icur != json[attr]) &#123;</div><div class="line">                    flag = <span class="literal">false</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (attr == <span class="string">'opacity'</span>) &#123;</div><div class="line">                    obj.style.filter = <span class="string">'alpha(opacity:'</span> + (icur + speed) + <span class="string">')'</span>;</div><div class="line">                    obj.style.opacity = (icur + speed) / <span class="number">100</span>;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    obj.style[attr] = icur + speed + <span class="string">'px'</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (flag) &#123;<span class="comment">//当所有运动都完成时，清除定时器</span></div><div class="line">                clearInterval(obj.timer);</div><div class="line">                <span class="keyword">if</span> (fn) &#123;</div><div class="line">                    fn();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;, <span class="number">30</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -314,179 +248,113 @@
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/02/code-reading-2/" class="archive-article-date">
-  	<time datetime="2018-02-02T13:17:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/02/code-reading-2/">imooc django代码阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/02/code-reading-1/" class="archive-article-date">
-  	<time datetime="2018-02-02T13:10:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/02/code-reading-1/">vue.js代码阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/02/03/js-component-1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/2017-summary/" class="archive-article-date">
-  	<time datetime="2017-12-31T15:01:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/2017-summary/">2017 总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/02/hello-world/" class="archive-article-date">
-  	<time datetime="2017-11-02T08:37:00.456Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-02</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/02/03/js-component-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          原生JS（二）：手风琴组件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/02/code-reading-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">imooc django代码阅读笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/02/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -509,8 +377,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

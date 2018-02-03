@@ -60,7 +60,7 @@
 	        
 				<li><a href="/categories/学习笔记/">学习笔记</a></li>
 	        
-				<li><a href="/categories/web相关/">web相关</a></li>
+				<li><a href="/categories/web相关">web相关</a></li>
 	        
 				<li><a href="/categories/算法与数据结构/">算法与数据结构</a></li>
 	        
@@ -144,7 +144,7 @@
 		        
 					<li style="width: 20%"><a href="/categories/学习笔记/">学习笔记</a></li>
 		        
-					<li style="width: 20%"><a href="/categories/web相关/">web相关</a></li>
+					<li style="width: 20%"><a href="/categories/web相关">web相关</a></li>
 		        
 					<li style="width: 20%"><a href="/categories/算法与数据结构/">算法与数据结构</a></li>
 		        
@@ -195,7 +195,7 @@
 <h4 id="layout中对弹窗的控制"><a href="#layout中对弹窗的控制" class="headerlink" title="layout中对弹窗的控制"></a>layout中对弹窗的控制</h4><p>功能都在组件中实现了，那么layout就只要控制弹窗的显示与隐藏，只需要将isShow与各自显示控制字段绑定即可。</p>
 <h4 id="组件路由"><a href="#组件路由" class="headerlink" title="组件路由"></a>组件路由</h4><p>layout.vue中</p>
 <blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;keep-alive&gt;</div><div class="line">&gt;   &lt;router-view&gt;&lt;/router-view&gt;</div><div class="line">&gt; &lt;/keep-alive&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="xml"><span class="tag">&lt;<span class="name">keep-alive</span>&gt;</span></span></div><div class="line">&gt;   &lt;router-view&gt;&lt;/router-view&gt;</div><div class="line">&gt; &lt;/keep-alive&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
 </blockquote>
 <p>实现路由到不同的页面</p>
 <h2 id="index页面"><a href="#index页面" class="headerlink" title="index页面"></a>index页面</h2><h4 id="数据填充"><a href="#数据填充" class="headerlink" title="数据填充"></a>数据填充</h4><p>在创建的时候就通过请求获取数据</p>
@@ -204,13 +204,13 @@
 </blockquote>
 <p>然后利用for循环将数据装入</p>
 <blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;div</div><div class="line">&gt; class="index-board-item"</div><div class="line">&gt; v-for="(item, index) in boardList"</div><div class="line">&gt; :class="[&#123;'line-last' : index % 2 !== 0&#125;, 'index-board-' + item.id]"&gt;</div><div class="line">&gt;   &lt;div class="index-board-item-inner" &gt;</div><div class="line">&gt;     &lt;h2&gt;&#123;&#123; item.title &#125;&#125;&lt;/h2&gt;</div><div class="line">&gt;     &lt;p&gt;&#123;&#123; item.description &#125;&#125;&lt;/p&gt;</div><div class="line">&gt;     &lt;div class="index-board-button"&gt;</div><div class="line">&gt;       &lt;router-link class="button" :to="&#123;path: 'detail/' + item.toKey&#125;"&gt;立即购买&lt;/router-link&gt;</div><div class="line">&gt;     &lt;/div&gt;</div><div class="line">&gt;   &lt;/div&gt;</div><div class="line">&gt; &lt;/div&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="xml"><span class="tag">&lt;<span class="name">div</span></span></span></div><div class="line"><span class="xml">&gt; class="index-board-item"</span></div><div class="line"><span class="xml">&gt; v-for="(item, index) in boardList"</span></div><div class="line"><span class="xml">&gt; :class="[&#123;'line-last' : index % 2 !== 0&#125;, 'index-board-' + item.id]"&gt;</span></div><div class="line">&gt;   &lt;div class="index-board-item-inner" &gt;</div><div class="line">&gt;     &lt;h2&gt;&#123;&#123; item.title &#125;&#125;&lt;/h2&gt;</div><div class="line">&gt;     &lt;p&gt;&#123;&#123; item.description &#125;&#125;&lt;/p&gt;</div><div class="line">&gt;     &lt;div class="index-board-button"&gt;</div><div class="line">&gt;       &lt;router-link class="button" :to="&#123;path: 'detail/' + item.toKey&#125;"&gt;立即购买&lt;/router-link&gt;</div><div class="line">&gt;     &lt;/div&gt;</div><div class="line">&gt;   &lt;/div&gt;</div><div class="line"><span class="xml">&gt; <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line"><span class="xml">&gt;</span></div></pre></td></tr></table></figure>
 </blockquote>
 <p>这段特别之处在于循环中使用变量来控制class，也就是说可以利用表达式构造自定义的class从而实现不同的css效果，上述代码借此实现奇偶项margin的不同以及不同块背景背景的不同。</p>
 <h4 id="轮播图组件"><a href="#轮播图组件" class="headerlink" title="轮播图组件"></a>轮播图组件</h4><p>轮播图组件实现的核心是使用一个nowindex变量控制哪一张显示以及isShow属性控制css动画。有一个runinv方法定时切换以及一个clearinv当鼠标悬停时不轮播切换。同时，它可以接收父元素给的inv和图像。</p>
 <h2 id="detail页面"><a href="#detail页面" class="headerlink" title="detail页面"></a>detail页面</h2><h4 id="左边列表栏"><a href="#左边列表栏" class="headerlink" title="左边列表栏"></a>左边列表栏</h4><p>利用v-for循环插入，特别之处在于active-class的绑定，这个可以指明选定该链接时应有的样式。</p>
 <blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; &lt;router-link v-for="item in products" :to="&#123; path: item.path &#125;" tag="li" active-class="active"&gt;</div><div class="line">&gt;   &#123;&#123; item.name &#125;&#125;</div><div class="line">&gt; &lt;/router-link&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="xml"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">v-for</span>=<span class="string">"item in products"</span> <span class="attr">:to</span>=<span class="string">"&#123; path: item.path &#125;"</span> <span class="attr">tag</span>=<span class="string">"li"</span> <span class="attr">active-class</span>=<span class="string">"active"</span>&gt;</span></span></div><div class="line"><span class="xml">&gt;   &#123;&#123; item.name &#125;&#125;</span></div><div class="line"><span class="xml">&gt; <span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span></div><div class="line"><span class="xml">&gt;</span></div></pre></td></tr></table></figure>
 </blockquote>
 <p>同时列表上方的图像也要根据不同的url而改变，所以建立了一个 url到图像的map</p>
 <blockquote>
@@ -359,7 +359,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          immoc django代码阅读笔记
+          imooc django代码阅读笔记
         
       </div>
     </a>
