@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Category: 算法与数据结构 | Neil&#39;s Blog</title>
+  <title>一道题看滑动窗口在数组中的应用 | Neil&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Neil&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/categories/算法与数据结构/index.html">
+  <meta name="description" content="在数组中，有一类关于连续字串最优解的问题，这个时候可以使用滑动窗口解法。 它的核心思想与对撞指针相似，维护两个指针，右指针遍历数组长度，当右指针前进到某一点不满足最优条件的时候，缩小窗口，左指针前进，重复这个操作直到右指针到达数组长度。 例子以leetcode76号题目为例，该题需要寻找S的最小字串，其包含T的每一个字母。 按照滑动窗口的思想，两个指针间的字串必须满足题目中包含T每一个字母的要求，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一道题看滑动窗口在数组中的应用">
+<meta property="og:url" content="http://yoursite.com/2018/03/05/sliding-window/index.html">
 <meta property="og:site_name" content="Neil&#39;s Blog">
+<meta property="og:description" content="在数组中，有一类关于连续字串最优解的问题，这个时候可以使用滑动窗口解法。 它的核心思想与对撞指针相似，维护两个指针，右指针遍历数组长度，当右指针前进到某一点不满足最优条件的时候，缩小窗口，左指针前进，重复这个操作直到右指针到达数组长度。 例子以leetcode76号题目为例，该题需要寻找S的最小字串，其包含T的每一个字母。 按照滑动窗口的思想，两个指针间的字串必须满足题目中包含T每一个字母的要求，">
+<meta property="og:updated_time" content="2018-03-05T06:51:23.991Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Neil&#39;s Blog">
+<meta name="twitter:title" content="一道题看滑动窗口在数组中的应用">
+<meta name="twitter:description" content="在数组中，有一类关于连续字串最优解的问题，这个时候可以使用滑动窗口解法。 它的核心思想与对撞指针相似，维护两个指针，右指针遍历数组长度，当右指针前进到某一点不满足最优条件的时候，缩小窗口，左指针前进，重复这个操作直到右指针到达数组长度。 例子以leetcode76号题目为例，该题需要寻找S的最小字串，其包含T的每一个字母。 按照滑动窗口的思想，两个指针间的字串必须满足题目中包含T每一个字母的要求，">
   
   
     <link rel="icon" href="/favicon.png">
@@ -157,37 +161,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-sliding-window" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      一道题看滑动窗口在数组中的应用
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/05/sliding-window/" class="archive-article-date">
+
+        
+        <a href="/2018/03/05/sliding-window/" class="archive-article-date">
   	<time datetime="2018-03-05T06:51:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-05</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/05/sliding-window/">一道题看滑动窗口在数组中的应用</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在数组中，有一类关于连续字串最优解的问题，这个时候可以使用滑动窗口解法。</p>
+<p>它的核心思想与对撞指针相似，维护两个指针，右指针遍历数组长度，当右指针前进到某一点不满足最优条件的时候，缩小窗口，左指针前进，重复这个操作直到右指针到达数组长度。</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>以<a href="https://leetcode.com/problems/minimum-window-substring/description/" target="_blank" rel="external">leetcode76</a>号题目为例，该题需要寻找S的最小字串，其包含T的每一个字母。</p>
+<p>按照滑动窗口的思想，两个指针间的字串必须满足题目中<strong>包含T每一个字母</strong>的要求，</p>
+<p>所以初始的时候先移动右指针得到初始窗口：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">do</span>&#123;</div><div class="line">    r++;</div><div class="line">    <span class="built_in">map</span>[<span class="keyword">int</span>(s[r])]++;</div><div class="line"></div><div class="line">    match=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;t.size();i++)&#123;</div><div class="line">      <span class="keyword">if</span>(<span class="built_in">map</span>[<span class="keyword">int</span>(t[i])]&lt;test[<span class="keyword">int</span>(t[i])])&#123;</div><div class="line">        match=<span class="number">0</span>;<span class="keyword">break</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"> &#125; <span class="keyword">while</span>(!match&amp;&amp;r&lt;<span class="keyword">int</span>(s.size()));</div></pre></td></tr></table></figure>
+<p>这个地方需要注意指针的含义，r,l是闭区间意味着在[l,r]中的字串都已经写入表中，之后再做是否满足条件的判断。当然这个地方也可以改成开区间，也就是说r是一个尾后指针，这样的话这部分代码就要改为这样：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(!match&amp;&amp;r&lt;=<span class="keyword">int</span>(s.size()))&#123;</div><div class="line">    		<span class="built_in">map</span>[<span class="keyword">int</span>(s[r])]++;</div><div class="line">    		r++;</div><div class="line">    		match=<span class="number">1</span>;</div><div class="line">    		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;t.size();i++)&#123;</div><div class="line">    			<span class="keyword">if</span>(<span class="built_in">map</span>[<span class="keyword">int</span>(t[i])]&lt;test[<span class="keyword">int</span>(t[i])])&#123;</div><div class="line">                     match=<span class="number">0</span>;<span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">    		&#125;</div><div class="line">    	&#125;;</div></pre></td></tr></table></figure>
+<p>初始化窗口之后，就可以开始移动另外一个指针，如果移动之后还满足条件，就重新取最优的字串，重复这个步骤直到右指针到达数组长度</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(r&lt;<span class="keyword">int</span>(s.size()))&#123;</div><div class="line">    		<span class="keyword">while</span>( <span class="built_in">map</span>[<span class="keyword">int</span>(s[l])]&gt;test[<span class="keyword">int</span>(s[l])] || 			                test[<span class="keyword">int</span>(s[l])]==<span class="number">0</span>)&#123;</div><div class="line">    			<span class="built_in">map</span>[<span class="keyword">int</span>(s[l])]--;</div><div class="line">    			l++;</div><div class="line">    		&#125;		</div><div class="line">    		minLen=min(minLen,r-l+<span class="number">1</span>);</div><div class="line">			<span class="keyword">if</span>(minLen==r-l+<span class="number">1</span>)&#123;</div><div class="line">				resultl=l;</div><div class="line">				resultr=r;</div><div class="line">			&#125;		</div><div class="line">			r++;</div><div class="line">			<span class="built_in">map</span>[<span class="keyword">int</span>(s[r])]++;   	</div><div class="line">    	&#125;</div></pre></td></tr></table></figure>
+<p>这题还有一个巧妙的方法，就是可以把上面两个循环和为一个，增加一个变量count(匹配字串的个数)，如果count大于待匹配字串的长度的时候，可以认为已经把窗口拉到了满足条件的长度，代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (begin = <span class="number">0</span>, end = <span class="number">0</span>; end &lt; S.length();++end) &#123;  </div><div class="line">            <span class="keyword">if</span> (needToFind[S[end]]&lt;<span class="number">0</span>) <span class="keyword">continue</span>;  </div><div class="line">                hasFound[S[end]]++;  </div><div class="line">            <span class="keyword">if</span> (hasFound[S[end]] &lt;= needToFind[S[end]])  </div><div class="line">                count++;  </div><div class="line">            <span class="keyword">if</span> (count &gt;= T.length()) &#123;  </div><div class="line">                <span class="keyword">while</span> (needToFind[S[begin]] == <span class="number">0</span> || hasFound[S[begin]] &gt; needToFind[S[begin]]) &#123; <span class="comment">//NOTE2: two level logica  </span></div><div class="line">                    <span class="keyword">if</span> (hasFound[S[begin]] &gt; needToFind[S[begin]]) &#123;  </div><div class="line">                        hasFound[S[begin]]--;  </div><div class="line">                    &#125;  </div><div class="line">                    begin++;  </div><div class="line">                &#125;  </div><div class="line">                windowBegin = begin;  </div><div class="line">                windowEnd = end;  </div><div class="line">                <span class="keyword">if</span> (windowEnd - windowBegin + <span class="number">1</span> &lt; minLength) &#123;  </div><div class="line">                    minLength = windowEnd - windowBegin + <span class="number">1</span>;  </div><div class="line">                    windowEnd = end;  </div><div class="line">                    windowBegin = begin;  </div><div class="line">                    minStr = S.substr(windowBegin, windowEnd - windowBegin + <span class="number">1</span>);  </div><div class="line">                &#125;  </div><div class="line">            &#125;  </div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>完整代码可参考：<a href="http://blog.csdn.net/feliciafay/article/details/44535301" target="_blank" rel="external">http://blog.csdn.net/feliciafay/article/details/44535301</a></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -200,55 +236,104 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/03/05/sliding-window/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/04/leetcode-215/" class="archive-article-date">
-  	<time datetime="2018-03-04T06:46:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/04/leetcode-215/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">从快排看指针数组</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/04/leetcode-215/">从快排看指针数组</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法与数据结构//" class="article-tag-list-link color3">算法与数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -271,10 +356,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
